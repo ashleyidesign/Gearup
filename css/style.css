@@ -235,8 +235,10 @@ body {
 .kit-section { margin-top: .25rem; }
 .kit-header {
   font-size: .6rem; text-transform: uppercase; letter-spacing: .1em;
-  color: var(--text-muted); font-weight: 700; margin-bottom: .5rem;
+  color: #fff; font-weight: 700; margin-bottom: .5rem;
   display: flex; align-items: center; gap: .4rem;
+  background: var(--warm); padding: .4rem .75rem;
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
 }
 
 .gear-src {
@@ -244,8 +246,8 @@ body {
   text-transform: uppercase; letter-spacing: .03em;
   clip-path: polygon(4px 0, 100% 0, 100% 100%, 0 100%, 0 4px);
 }
-.gear-src.sheet { background: var(--accent-light); color: var(--accent); }
-.gear-src.fallback { background: var(--warm-light); color: var(--warm); }
+.gear-src.sheet { background: rgba(255,255,255,.25); color: #fff; }
+.gear-src.fallback { background: rgba(255,255,255,.25); color: #fff; }
 
 .kit-list { list-style: none; }
 
@@ -255,9 +257,19 @@ body {
   background: var(--surface);
   border-left: 4px solid var(--accent); transition: all .15s;
   clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px);
+  position: relative;
+}
+.kit-item::after {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 20px; height: 20px;
+  background: var(--warm);
+  clip-path: polygon(8px 0, 20px 0, 0 20px, 0 8px);
+  pointer-events: none;
 }
 .kit-item:hover { background: var(--surface-2); }
 .kit-item.optional { border-left-color: var(--border); opacity: .6; }
+.kit-item.optional::after { background: var(--border); }
 .kit-item.gap { border-left-color: var(--warm); border-left-style: dashed; }
 
 .kit-icon { font-size: 1.1rem; flex-shrink: 0; width: 26px; text-align: center; }
